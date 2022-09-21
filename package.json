@@ -1,0 +1,84 @@
+{
+  "name": "electron-docs-sql3",
+  "author": "sonicsunsky",
+  "private": true,
+  "version": "0.0.3",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron": "wait-on tcp:3001 && cross-env NODE_ENV=development electron .",
+    "electron:serve": "concurrently -k \"yarn dev\" \"yarn electron\"",
+    "electron:build.mac": "vite build && electron-builder --mac",
+    "electron:build.win": "vite build && electron-builder --win",
+    "electron:build.win64": "vite build && electron-builder --win --x64",
+    "electron:publish": "electron-builder --mac --win -p always",
+    "rebuild:sql3": "electron-rebuild -f -w better-sqlite3"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.9",
+    "better-sqlite3": "^7.6.2",
+    "docxtemplater": "^3.30.1",
+    "electron-log": "^4.4.8",
+    "electron-updater": "^5.2.1",
+    "element-plus": "^2.2.15",
+    "file-saver": "^2.0.5",
+    "jszip-utils": "^0.1.0",
+    "pizzip": "^3.1.1",
+    "vue": "^3.2.25",
+    "vue-router": "4",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "concurrently": "^7.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "19.0.17",
+    "electron-builder": "^23.3.3",
+    "electron-rebuild": "^3.2.9",
+    "sass": "^1.53.0",
+    "vite": "^3.1.0",
+    "wait-on": "^6.0.1"
+  },
+  "build": {
+    "appId": "com.electron-docs-sql3.app",
+    "asar": false,
+    "productName": "electron-docs-sql3",
+    "copyright": "Copyright © 2022 ${author}",
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "guid": "electron-docs-sql3-guid",
+      "include": "./build/installer.nsh",
+      "deleteAppDataOnUninstall": true
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "sonicsunsky",
+      "repo": "electron-docs-sql3"
+    }
+  }
+}
