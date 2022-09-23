@@ -2,7 +2,7 @@
   "name": "electron-docs-sql3",
   "author": "sonicsunsky",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.2",
   "main": "electron/main.js",
   "scripts": {
     "dev": "vite",
@@ -13,8 +13,9 @@
     "electron:build.mac": "vite build && electron-builder --mac",
     "electron:build.win": "vite build && electron-builder --win",
     "electron:build.win64": "vite build && electron-builder --win --x64",
-    "electron:publish": "electron-builder --mac --win -p always",
-    "rebuild:sql3": "electron-rebuild -f -w better-sqlite3"
+    "electron:publish": "electron-builder --win -p always",
+    "rebuild:sql3": "electron-rebuild -f -w better-sqlite3",
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.9",
@@ -78,7 +79,8 @@
     "publish": {
       "provider": "github",
       "owner": "sonicsunsky",
-      "repo": "electron-docs-sql3"
+      "repo": "electron-docs-sql3",
+      "releaseType": "release"
     }
   }
 }
