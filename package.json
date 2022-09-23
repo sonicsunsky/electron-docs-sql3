@@ -2,7 +2,7 @@
   "name": "electron-docs-sql3",
   "author": "sonicsunsky",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.1",
   "main": "electron/main.js",
   "scripts": {
     "dev": "vite",
@@ -79,8 +79,7 @@
     "publish": {
       "provider": "github",
       "owner": "sonicsunsky",
-      "repo": "electron-docs-sql3",
-      "releaseType": "release"
+      "repo": "electron-docs-sql3"
     }
   }
 }
